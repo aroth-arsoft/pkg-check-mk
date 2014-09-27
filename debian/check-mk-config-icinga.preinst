@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+dpkg-maintscript-helper mv_conffile \
+    /etc/icinga/objects/check_mk_templates.cfg \
+    /etc/icinga/objects/check_mk/check_mk_templates.cfg \
+    1.1.10-2 -- "$@"
+
+#DEBHELPER#
+

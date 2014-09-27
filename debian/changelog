@@ -1,0 +1,136 @@
+check-mk (1.2.4p2-0ubuntu3) trusty; urgency=low
+
+  * rebuild for trusty
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Thu, 10 Apr 2014 15:01:41 +0200
+
+check-mk (1.2.4p2-0ubuntu2) saucy; urgency=low
+
+  * rebuild for saucy
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Thu, 10 Apr 2014 15:01:34 +0200
+
+check-mk (1.2.4p2-0ubuntu1) precise; urgency=low
+
+  * New upstream release 1.2.4p2
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Thu, 10 Apr 2014 14:40:01 +0200
+
+check-mk (1.2.4-0ubuntu3) trusty; urgency=low
+
+  *  rebuild for trusty
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Sat, 29 Mar 2014 20:39:20 +0100
+
+check-mk (1.2.4-0ubuntu2) saucy; urgency=low
+
+  *  rebuild for saucy
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Sat, 29 Mar 2014 20:35:42 +0100
+
+check-mk (1.2.4-0ubuntu1) precise; urgency=low
+
+  * New upstream release
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Sat, 29 Mar 2014 20:25:32 +0100
+
+check-mk (1.2.2p3-1~ubuntu12.04.1~c42.ppa1) precise; urgency=low
+
+  * No-change backport to precise
+
+ -- H.-Dirk Schmitt <dirk@computer42.org>  Fri, 28 Feb 2014 01:39:46 +0100
+
+check-mk (1.2.2p3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Thomas Bechtold <toabctl@debian.org>  Thu, 05 Dec 2013 20:33:24 +0100
+
+check-mk (1.2.2p2-1) unstable; urgency=low
+
+  [ Thomas Bechtold ]
+  * New upstream release (Closes: #678396).
+  * Update defaults in debian/defaults.nagios3 and debian/defaults.icinga.
+  * Update debian/patches/02_wato-sudoers.dpatch.
+  * debian/check-mk-server.install: Remove usr/share/check_mk/pnp-rraconf.
+  * debian/check-mk-config-nagios3.install: Adjust path for
+    check_mk_templates.cfg.
+  * debian/check-mk-config-icinga.install: Adjust path for
+    check_mk_templates.cfg.
+  * debian/check-mk-multisite.install: Remove no longer available
+    etc/sudoers.d/check_mk_wato.
+  * [411c207] check-mk-server: Add debconf note about RRD update.
+  * [fd007c2] Handle apache 2.2 and apache2.4
+  * [9038096] debconf msg only when upgrading from < 1.2.0
+
+  [ Alexander Wirt ]
+  * [1abe7cc] Bump standards version
+
+ -- Alexander Wirt <formorer@debian.org>  Fri, 13 Sep 2013 08:00:52 +0200
+
+check-mk (1.1.12p7-1) unstable; urgency=low
+
+  * [b088706] Add Recommends for snmp to server part
+  * [1708000] Imported Upstream version 1.1.12p7
+  * [256e383] Recommends ethtool and smartmontools in check-mk-agent
+    (Closes: #649677)
+  * [5a4c4cc] Move manpages to -server and don't compress docs (Closes: #649676)
+  * [2f52423] Create /etc/check_mk/conf.d in multisite package (Closes: #649316)
+  * [c536571] Bump version for default files
+  * [688edf4] Fix usage of dpkg-maintscript-helper.
+    Thanks to Colin Watson for the patch (Closes: #659548)
+  * [98ce919] Call dh_* with -a or -i (Closes: #649162)
+  * [1107727] Add missing dh_ calls to binary-indep
+  * [b2f781c] Add missing -nagios3 preinst
+
+ -- Alexander Wirt <formorer@debian.org>  Thu, 05 Apr 2012 19:36:02 +0200
+
+check-mk (1.1.12-1) unstable; urgency=low
+
+  [ Bernd Zeimetz ]
+  * [791a318] Install necessary sudo permissions for WATO.
+  * [cb1f3c7] Fix lintian W: check-mk source:
+              brace-expansion-in-debhelper-config-file
+  * [b5562b4] Install /var/lib/check_mk/wato as required by wato.
+  * [571007f] /var/lib/check_mk/autochecks/ should be owned by nagios, too.
+  * [d6e7572] /var/lib/check_mk/precompiled should be owned by nagios:nagios.
+  * [5456d5c] Move check_mk nagios/icinga config files into check_mk subfolder.
+  * [bd0ea1d] Add a check-mk-doc package and configure defaults accordingly.
+
+  [ Alexander Wirt ]
+  * [559e8b7] Migrate configuration files to /etc/icinga/objects/check_mk
+  * [d5bad65] Fix typo in control file
+  * [11edf6f] Migrate check-mk objects for nagios
+  * [a6b822f] Add missing debhelper tokens
+  * [fd14d37] Add missing set -e
+  * [28a25ee] config postinst should depend on adduser
+  * [6b67884] Fix permissions for wato dirs
+  * [ba084b0] Also include versions like 1.10p2
+  * [6f0a194] Imported Upstream version 1.1.10p3
+  * [869f2a0] Install logwatch.cfg to examples (Closes: #639255)
+  * [cdfef39] Make check-mk web dir sgid nagios
+  * [3b7f02e] Imported Upstream version 1.1.12
+
+ -- Alexander Wirt <formorer@debian.org>  Fri, 11 Nov 2011 23:52:28 +0100
+
+check-mk (1.1.10-2) unstable; urgency=low
+
+  [ Christoph Berg ]
+  * [1163b0d] Add Vcs-* fields
+
+  [ Alexander Wirt ]
+  * [84fc3f7] Fix installation path for objects and templates in
+    *nagios3* package.
+    Thanks to Richard James Salts for the patch (Closes: #634016)
+  * [7c1720c] Bump standards version (no changes)
+  * [66132ef] Add missing build targets to rules file
+  * [96b686b] Add README.source file
+  * [15fa444] Add README.Debian to all binary packages
+
+ -- Alexander Wirt <formorer@debian.org>  Thu, 11 Aug 2011 07:56:01 +0200
+
+check-mk (1.1.10-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Alexander Wirt <formorer@debian.org>  Mon, 30 May 2011 21:48:51 +0200

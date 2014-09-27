@@ -1,0 +1,22 @@
+This package was debianized by Alexander Wirt <formorer@debian.org>
+and Sven Velt <sven@velt.de>.  
+
+It was downloaded from http://mathias-kettner.de/check_mk_download.html
+
+Current Debian Maintainers: The nagios packaging packaging team 
+			    http://alioth.debian.org/projects/pkg-nagios/
+
+Mailing-List: 	pkg-nagios-devel@lists.alioth.debian.org
+
+Upstream Author:  Mathias Kettner <mk@mathias-kettner.de>
+
+Copyright (c) 2009-2010 Mathias Kettner <mk@mathias-kettner.de>
+
+License:
+ 
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 2 as
+published by the Free Software Foundation.
+
+On Debian systems, the complete text of the GNU General Public
+License, version 2, can be found in /usr/share/common-licenses/GPL-2.

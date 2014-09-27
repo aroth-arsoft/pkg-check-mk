@@ -1,0 +1,8 @@
+*.tar.gz
+/VERSION
+/setup.sh
+/package_info
+/COPYING
+/ChangeLog
+*.py
+/AUTHORS

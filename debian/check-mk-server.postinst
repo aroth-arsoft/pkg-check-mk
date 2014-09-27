@@ -1,0 +1,51 @@
+#!/bin/bash
+
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+db_stop
+
+# a little helper for getting permissions right
+setperm() {
+    local user="$1"
+    local group="$2"
+    local mode="$3"
+    local file="$4"
+    shift 4
+    # only do something when no setting exists
+    if ! dpkg-statoverride --list "$file" >/dev/null 2>&1; then
+      chown "$user":"$group" "$file"
+      chmod "$mode" "$file"
+    fi
+}
+
+case "$1" in
+	  configure)
+		#make sure our nagios user exists  
+		if ! getent passwd nagios > /dev/null ; then
+			echo 'Adding system-user for nagios' 1>&2
+			adduser --system --group --home /var/lib/nagios \
+			  --disabled-login --force-badname nagios > /dev/null
+		fi
+		#fix permissions for some directorys
+		test -d /var/lib/check_mk/cache || mkdir -p /var/lib/check_mk/cache
+		setperm nagios nagios 0750 /var/lib/check_mk/cache
+		test -d /var/lib/check_mk/autochecks || mkdir -p /var/lib/check_mk/autochecks
+		setperm nagios nagios 0750 /var/lib/check_mk/autochecks
+		test -d /var/lib/check_mk/precompiled || mkdir -p /var/lib/check_mk/precompiled
+		setperm nagios nagios 0750 /var/lib/check_mk/precompiled
+		test -d /var/lib/check_mk/counters/ || mkdir -p /var/lib/check_mk/counters/
+		setperm nagios nagios 0750 /var/lib/check_mk/counters/
+		test -d /var/lib/check_mk/logwatch/ || mkdir -p /var/lib/check_mk/logwatch/
+		setperm nagios www-data 0770 /var/lib/check_mk/logwatch/
+    ;;
+  abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+  *)
+    echo "postinst called with unknown argument \$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#

@@ -1,0 +1,130 @@
+Source: check-mk
+Section: admin
+Priority: optional
+Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
+Uploaders: Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>, Sven Velt <sven@velt.de>
+Build-Depends: debhelper (>= 7), dpatch
+Standards-Version: 3.9.4
+Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-check-mk.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-check-mk.git
+
+Package: check-mk-agent
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: xinetd, python
+Recommends: ethtool, smartmontools
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the agent part of check-mk.
+
+Package: check-mk-agent-logwatch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-agent
+Suggests: xinetd, python
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the logwatch plugin for the agent.
+
+
+Package: check-mk-server
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, python, check-mk-config-nagios3 | check-mk-config-icinga, debconf
+Recommends: check-mk-doc, snmp
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the server part of check_mk
+
+Package: check-mk-config-icinga
+Conflicts: check-mk-config-nagios3
+Architecture: any
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the icinga specific part of check_mk
+
+Package: check-mk-config-nagios3
+Architecture: any
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser
+Conflicts: check-mk-config-icinga
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the nagios 3 specific part of check_mk
+
+Package: check-mk-livestatus
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: xinetd
+Conflicts: ucspi-unix
+Recommends: check-mk-doc
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains livestatus
+
+Package: check-mk-multisite
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libapache2-mod-python, check-mk-config-nagios3 | check-mk-config-icinga
+Recommends: sudo, check-mk-doc
+Suggests: check-mk-livestatus
+Description: general purpose nagios-plugin for retrieving data
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the webfrontend of check_mk also known as
+ "MK-Multisite"
+
+Package: check-mk-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Suggests: check-mk-livestatus, check-mk-server, check-mk-multisite
+Description: general purpose nagios-plugin for retrieving data (documentation)
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the check_mk documentation.

@@ -1,0 +1,3 @@
+usr/share/check_mk/web
+var/lib/check_mk/web
+var/lib/check_mk/wato

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+setperm() {
+    local user="$1"
+    local group="$2"
+    local mode="$3"
+    local file="$4"
+    shift 4
+    # only do something when no setting exists
+    if ! dpkg-statoverride --list "$file" >/dev/null 2>&1; then
+        chown "$user":"$group" "$file"
+        chmod "$mode" "$file"
+    fi
+}
+
+case "$1" in
+    configure)
+        # explicitly set permissions on some files
+        setperm www-data nagios 4770 /var/lib/check_mk/web
+        setperm www-data nagios 4770 /var/lib/check_mk/wato
+        setperm www-data nagios 4770 /etc/check_mk/conf.d
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    *)
+        echo "postinst called with unknown argument \$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
