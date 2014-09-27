@@ -1,0 +1,11 @@
+--- a/setup.sh
++++ b/setup.sh
+@@ -564,6 +564,8 @@
+    rm -rf $D
+    mkdir -p $D
+    tar xvzf $SRCDIR/livestatus.tar.gz -C $D
++   sed -i '/Boston/ a\
++#include <cstddef>' livestatus.src/src/TableStatus.cc livestatus.src/src/TableLog.cc
+    pushd $D
+ 
+    local CONFIGURE_OPTS=""

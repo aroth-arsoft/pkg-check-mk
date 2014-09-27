@@ -1,0 +1,13 @@
+*.debhelper.log
+*.substvars
+*.debhelper
+/files
+/check-mk-agent/
+/check-mk-agent-logwatch/
+/check-mk-config-icinga/
+/check-mk-config-nagios3/
+/check-mk-doc/
+/check-mk-livestatus/
+/check-mk-multisite/
+/check-mk-server/
+/tmp/

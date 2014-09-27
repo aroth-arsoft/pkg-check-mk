@@ -1,14 +1,6 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## wato-sudoers-location.dpatch by Bernd Zeimetz <bzed@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: Install WATO sudoers line into /etc/sudoers.d/check_mk_WATO
-
-@DPATCH@
-diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' '--exclude=_darcs' '--exclude=.bzr' pkg-check-mk~/setup.sh pkg-check-mk/setup.sh
---- pkg-check-mk~/setup.sh	2013-08-07 11:44:12.000000000 +0200
-+++ pkg-check-mk/setup.sh	2013-08-07 11:47:40.344748346 +0200
-@@ -718,28 +718,11 @@
+--- a/setup.sh
++++ b/setup.sh
+@@ -741,28 +741,11 @@
  	return
      fi
  

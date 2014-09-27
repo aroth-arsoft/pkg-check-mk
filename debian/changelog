@@ -1,3 +1,9 @@
+check-mk (1.2.4p5-0ubuntu1~aroth~ppa1) trusty; urgency=medium
+
+  * new upstream version 1.2.4p5
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 27 Sep 2014 18:23:23 +0200
+
 check-mk (1.2.4p2-0ubuntu3) trusty; urgency=low
 
   * rebuild for trusty
