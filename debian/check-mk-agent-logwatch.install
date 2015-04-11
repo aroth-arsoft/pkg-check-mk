@@ -1,2 +1,2 @@
 usr/share/check_mk/agents/plugins/mk_logwatch usr/lib/check_mk_agent/plugins
-usr/share/check_mk/agents/logwatch.cfg etc/check_mk
+usr/share/check_mk/agents/cfg_examples/logwatch.cfg etc/check_mk

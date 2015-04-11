@@ -60,7 +60,7 @@ install: build
 	DESTDIR=debian/tmp ./setup.sh --yes
 	#don't use the statically linked binary.
 	rm debian/tmp/usr/share/check_mk/agents/waitmax
-	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/tmp/usr/share/check_mk/agents/waitmax.c
+	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/agents-waitmax.c
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
 	# We need 2 different "defaults" files for Icinga and Nagios3
 	rm debian/tmp/usr/share/check_mk/modules/defaults
