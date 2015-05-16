@@ -1,3 +1,15 @@
+check-mk (1.2.6p2-0ubuntu1~aroth~ppa2) vivid; urgency=medium
+
+  * build for all active versions
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 16 May 2015 16:18:30 +0200
+
+check-mk (1.2.6p2-0ubuntu1~aroth~ppa1) vivid; urgency=medium
+
+  * new upstream version 1.2.6p2
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 16 May 2015 15:51:45 +0200
+
 check-mk (1.2.6p1-0ubuntu1~aroth~ppa2) vivid; urgency=medium
 
   * fixed defaults
