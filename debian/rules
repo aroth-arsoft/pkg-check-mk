@@ -85,6 +85,9 @@ install: build
 	sed -i 's#disable\s*=\s*no#disable        = yes#' debian/check-mk-agent/etc/xinetd.d/check_mk
 	# move checks manpages (to be installed in -server)
 	mv debian/tmp/usr/share/doc/check_mk/checks debian/tmp/usr/share/check_mk/checks-man
+	rm debian/tmp/usr/share/check_mk/checks/mysql_slave
+	cp debian/mysql_slave debian/tmp/usr/share/check_mk/checks/mysql_slave
+	chmod +x debian/tmp/usr/share/check_mk/checks/mysql_slave
 
 # Build architecture-independent files here.
 binary-indep: build install
