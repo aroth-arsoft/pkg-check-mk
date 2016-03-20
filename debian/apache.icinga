@@ -1,4 +1,4 @@
-# Created by setup of check_mk version 1.1.6p1
+# Created by setup of check_mk version 1.2.6p12
 # This file will *not* be overwritten at the next setup
 # of check_mk. You may edit it as needed. In order to get
 # a new version, please delete it and re-run setup.sh.
@@ -14,7 +14,7 @@
     <Directory /usr/share/check_mk/web/htdocs>
         AddHandler mod_python .py
         PythonHandler index
-        PythonDebug On 
+        PythonDebug On
         DirectoryIndex index.py
 
         #Handle apache 2.2 and 2.4
@@ -35,8 +35,35 @@
 
         ErrorDocument 403 "<h1>Authentication Problem</h1>Either you've entered an invalid password or the authentication<br>configuration of your check_mk web pages is incorrect.<br><br>Please make sure that you've edited the file<br><tt>/etc/apache2/conf.d/check_mk</tt> and made it use the same<br>authentication settings as your Nagios web pages.<br>Restart Apache afterwards."
         ErrorDocument 500 "<h1>Server or Configuration Problem</h1>A Server problem occurred. You'll find details in the error log of Apache. One possible reason is, that the file <tt>/etc/nagios/htpasswd.users</tt> is missing. You can create that file with <tt>htpasswd</tt> or <tt>htpasswd2</tt>. A better solution might be to use your existing htpasswd file from your Nagios installation. Please edit <tt>/etc/apache2/conf.d/check_mk</tt> and change the path there. Restart Apache afterwards."
-      </Directory>
+    </Directory>
+  ## WARNING: automation is part of multisite, more information at
+  ##  http://mathias-kettner.com/checkmk_multisite_automation.html
+  ## It uses a shared secret rather than HTTP Auth for authentication and
+  ## and is potentially exposed to public networks so is disabled on Debian
+  ## by default. If you need this feature, be sure you understand the
+  ## security implications and take necessary precautions before turning it on.
+  ## Automation is done without HTTP Auth
+  #<Location "/check_mk/automation.py">
+  #     Order allow,deny
+  #     Allow from all
+  #     Satisfy any
+  #</Location>
+
+  ## WARNING: like automation above, run_cron is part of multisite.
+  ## It does not use HTTP Auth, but is only exposed to localhost. Having
+  ## it enabled has less risk, but since it's part of multisite it is
+  ## also disabled by default on Debian.
+  ## Trigger cron jobs. This is done without authentication
+  #<Location "/check_mk/run_cron.py">
+  #    Order deny,allow
+  #    Deny from all
+  #    Allow from 127.0.0.1
+  #    Satisfy any
+  #</Location>
+
 </IfModule>
+
+
 
 <IfModule !mod_python.c>
     Alias /check_mk /usr/share/check_mk/web/htdocs

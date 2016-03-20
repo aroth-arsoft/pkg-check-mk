@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+# cleanup var dirs on 
+if [ "$1" = "purge" ] ; then
+        [ -e /var/lib/check_mk ] && rm -rf /var/lib/check_mk || true
+fi
+
+#DEBHELPER#

@@ -2,7 +2,11 @@ Source: check-mk
 Section: admin
 Priority: optional
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
-Uploaders: Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>, Sven Velt <sven@velt.de>
+Uploaders: Alexander Wirt <formorer@debian.org>,
+           Jan Wagner <waja@cyconet.org>,
+           Thomas Bechtold <toabctl@debian.org>,
+           Ilya Rassadin <elcamlost@gmail.com>,
+           Matt Taggart <taggart@debian.org>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-check-mk.git
@@ -24,9 +28,8 @@ Description: general purpose nagios-plugin for retrieving data
  This package contains the agent part of check-mk.
 
 Package: check-mk-agent-logwatch
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-agent
-Suggests: xinetd, python
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-agent, python
 Description: general purpose nagios-plugin for retrieving data
  Check_mk adopts a new a approach for collecting data from operating systems
  and network components. It obsoletes NRPE, check_by_ssh, NSClient and

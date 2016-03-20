@@ -1,2 +1,44 @@
-We use dpatch for patch handling inside our nagios related packages.  Please see
-/usr/share/doc/dpatch/README.source.gz (if you have installed dpatch) for documentation about dpatch.
+dpatch
+------
+We use dpatch for patch handling inside our nagios related packages.
+Please see /usr/share/doc/dpatch/README.source.gz (if you have
+installed dpatch) for documentation about dpatch.
+
+upstream vs debian install paths
+--------------------------------
+This is a list of the differences between an upstream check_mk install
+using setup.sh and what files and directories the debian packages
+create.
+Last reviewed 2015-08-21 by taggart@debian.org.
+
+upstream -> debian
+
+/etc/apache2/conf.d/zzz_check_mk.conf -> check-mk-config-* postinst creates
+   /etc/apache2/conf-available/check-mk-multisite.conf
+
+(no logwatch.cfg) ->
+     /etc/check_mk/logwatch.cfg provided by check-mk-agent-logwatch
+
+/usr/share/check_mk/agents/xinetd.conf -> /etc/xinetd.d/check_mk
+
+/etc/nagios/auth.serials -> not needed
+
+/usr/share/check_mk/modules/defaults -> provided by check-mk-config-*
+/usr/share/check_mk/web/htdocs/defaults.py -> symlink to above, provided
+   by check-mk-config-*
+
+/usr/share/check_mk/check_mk_templates.cfg -> not needed
+/etc/nagios/objects/check_mk_templates.cfg -> symlink to above, not needed
+
+/usr/share/check_mk/agents/ -> we just provide check_mk_agent/cmk/mk-job/mkp
+/usr/share/check_mk/agents/plugins/ -> don't provide, see #796453
+/usr/share/check_mk/inventory/ -> don't provide, see #796455
+
+/usr/share/doc/check_mk/ -> split up by package name
+/usr/share/doc/check_mk/checks/ -> /usr/share/check_mk/checks-man in -doc
+
+/usr/share/check_mk/locale/ -> unneeded by default
+/var/lib/check_mk/notify/ -> automatically created with the correct
+  ownership and permissions
+
+/etc/check_mk/multisite.mk -> /usr/share/doc/check-mk-multisite/examples/

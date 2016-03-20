@@ -11,3 +11,4 @@ usr/share/check_mk/checks
 usr/share/check_mk/checks-man
 usr/share/check_mk/modules
 usr/share/check_mk/pnp-templates
+usr/share/check_mk/notifications

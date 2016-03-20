@@ -7,6 +7,16 @@ dpkg-maintscript-helper mv_conffile \
     /etc/nagios3/conf.d/check_mk/check_mk_templates.cfg \
     1.1.10-2 -- "$@"
 
+# older releases (1.1.12p7-1 at least) delivered the multisite conffile to
+# /etc/apache2/conf.d. If it exists we need to move it to conf-available
+# once it's moved then the code below will setup the conf.d symlink.
+# This code wasn't in place until 1.2.6p4-2, so we need to check everything
+# before that.
+dpkg-maintscript-helper mv_conffile \
+    /etc/apache2/conf.d/check_mk_multisite.cfg \
+    /etc/apache2/conf-available/check_mk_multisite.cfg \
+    1.2.6p4-2 -- "$@"
+
 if [ "$1" = "remove" ] || [ "$1" = "purge" ] ; then
         CONF="check-mk-multisite"
         COMMON_STATE=$(dpkg-query -f '${Status}' -W 'apache2.2-common' 2>/dev/null | awk '{print $3}' || true)

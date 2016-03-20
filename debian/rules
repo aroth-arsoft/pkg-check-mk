@@ -58,10 +58,27 @@ install: build
 	dh_installdebconf
 	mkdir -p debian/tmp
 	DESTDIR=debian/tmp ./setup.sh --yes
-	#don't use the statically linked binary.
+	## clean up binaries shipped by upstream
+	# upstream agent deb and rpm
+	rm -rf debian/tmp/usr/share/check_mk/agent/check-mk-agent*.deb
+	rm -rf debian/tmp/usr/share/check_mk/agent/check-mk-agent*.rpm
+	# java jar and classes (we don't rebuild these, help if you want them)
+	rm -rf debian/tmp/usr/share/doc/check_mk/jasperreports
+	# Windows binaries (we don't rebuild these, help if you want them)
+	rm -rf debian/tmp/usr/share/check_mk/agents/windows
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/windows_msi
+	# fsc-celsius 'treasure' tarball that includes binaries
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/fsc-celsius*
+	# agent_modbus
+	rm debian/tmp/usr/share/doc/check_mk/treasures/modbus/agent_modbus
+	# waitmax, build our own
 	rm debian/tmp/usr/share/check_mk/agents/waitmax
-	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/agents-waitmax.c
+	# upstream stopped including waitmax.c, so we carry it in debian/
+	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/waitmax.c
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
+	# z_os waitmax
+	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
+	## config files
 	# We need 2 different "defaults" files for Icinga and Nagios3
 	rm debian/tmp/usr/share/check_mk/modules/defaults
 	rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
@@ -80,11 +97,20 @@ install: build
 	# Prepare agent files
 	cp debian/tmp/usr/share/check_mk/agents/check_mk_agent.linux debian/check-mk-agent/usr/bin/check_mk_agent
 	chmod +x debian/check-mk-agent/usr/bin/check_mk_agent
+	# mkp wrapper script
+	mkdir -p debian/check-mk-server/usr/bin
+	cp debian/tmp/usr/bin/mkp debian/check-mk-server/usr/bin/
+	chmod +x debian/check-mk-server/usr/bin/mkp
+	# xinetd: provide config, but disabled by default
 	cp debian/tmp/usr/share/check_mk/agents/xinetd.conf debian/check-mk-agent/etc/xinetd.d/check_mk
-	# xinetd: Disable service
 	sed -i 's#disable\s*=\s*no#disable        = yes#' debian/check-mk-agent/etc/xinetd.d/check_mk
 	# move checks manpages (to be installed in -server)
 	mv debian/tmp/usr/share/doc/check_mk/checks debian/tmp/usr/share/check_mk/checks-man
+	# remove installed ChangeLog to avoid duplicate
+	rm debian/tmp/usr/share/doc/check_mk/ChangeLog
+	# remove installed COPYING, redundant
+	rm debian/tmp/usr/share/doc/check_mk/COPYING
+	# Custom aroth specific changes
 	rm debian/tmp/usr/share/check_mk/checks/mysql_slave
 	cp debian/mysql_slave debian/tmp/usr/share/check_mk/checks/mysql_slave
 	chmod +x debian/tmp/usr/share/check_mk/checks/mysql_slave

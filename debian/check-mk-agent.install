@@ -1,1 +1,2 @@
 usr/share/check_mk/agents/waitmax usr/bin
+usr/share/check_mk/agents/mk-job usr/bin
