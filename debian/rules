@@ -48,7 +48,7 @@ clean:
 	# Add here commands to clean up after the build process.
 	rm -rf agents docs config livestatus.src livestatus.log
 
-	dh_clean
+	dh_clean --with systemd
 
 install: build
 	dh_testdir
@@ -117,6 +117,9 @@ install: build
 	# fix the she-bang
 	sed -i 's@#!usr/bin/python@#!/usr/bin/python@' debian/tmp/usr/share/check_mk/checks/fortigate_ipsecvpn
 	chmod +x debian/tmp/usr/share/check_mk/checks/msexch_database
+	mkdir -p debian/tmp/lib/systemd/system
+	install -m 0644 debian/check-mk-agent.socket debian/tmp/lib/systemd/system/check-mk-agent.socket
+	install -m 0644 debian/check-mk-agent@.service debian/tmp/lib/systemd/system/check-mk-agent@.service
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -127,6 +130,8 @@ binary-indep: build install
 	dh_installexamples -i
 	dh_install -i
 	dh_installman -i
+	dh_systemd_enable
+	dh_systemd_start
 	dh_link -i
 	dh_strip -i
 	dh_compress -i
