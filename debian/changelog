@@ -1,3 +1,9 @@
+check-mk (1.2.8p9-0.1ubuntu0~aroth~ppa3) xenial; urgency=medium
+
+  * fixed template
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 27 Aug 2016 18:29:21 +0200
+
 check-mk (1.2.8p9-0.1ubuntu0~aroth~ppa2) xenial; urgency=medium
 
   * add systemd support
