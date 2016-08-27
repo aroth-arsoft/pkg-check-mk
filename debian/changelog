@@ -1,3 +1,9 @@
+check-mk (1.2.8p9-0.1ubuntu0~aroth~ppa1) xenial; urgency=medium
+
+  * new upstream version
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 27 Aug 2016 14:24:47 +0200
+
 check-mk (1.2.6p12-1ubuntu0.1~aroth~ppa1) wily; urgency=medium
 
   * integrate latest ubuntu changes

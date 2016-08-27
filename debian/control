@@ -8,7 +8,7 @@ Uploaders: Alexander Wirt <formorer@debian.org>,
            Ilya Rassadin <elcamlost@gmail.com>,
            Matt Taggart <taggart@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-check-mk.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-check-mk.git
 
@@ -103,7 +103,7 @@ Description: general purpose nagios-plugin for retrieving data
 
 Package: check-mk-multisite
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libapache2-mod-python, check-mk-config-nagios3 | check-mk-config-icinga
+Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-config-nagios3 | check-mk-config-icinga
 Recommends: sudo, check-mk-doc
 Suggests: check-mk-livestatus
 Description: general purpose nagios-plugin for retrieving data

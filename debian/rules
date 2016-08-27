@@ -102,7 +102,7 @@ install: build
 	cp debian/tmp/usr/bin/mkp debian/check-mk-server/usr/bin/
 	chmod +x debian/check-mk-server/usr/bin/mkp
 	# xinetd: provide config, but disabled by default
-	cp debian/tmp/usr/share/check_mk/agents/xinetd.conf debian/check-mk-agent/etc/xinetd.d/check_mk
+	cp debian/tmp/usr/share/check_mk/agents/cfg_examples/xinetd.conf debian/check-mk-agent/etc/xinetd.d/check_mk
 	sed -i 's#disable\s*=\s*no#disable        = yes#' debian/check-mk-agent/etc/xinetd.d/check_mk
 	# move checks manpages (to be installed in -server)
 	mv debian/tmp/usr/share/doc/check_mk/checks debian/tmp/usr/share/check_mk/checks-man
@@ -114,6 +114,9 @@ install: build
 	rm debian/tmp/usr/share/check_mk/checks/mysql_slave
 	cp debian/mysql_slave debian/tmp/usr/share/check_mk/checks/mysql_slave
 	chmod +x debian/tmp/usr/share/check_mk/checks/mysql_slave
+	# fix the she-bang
+	sed -i 's@#!usr/bin/python@#!/usr/bin/python@' debian/tmp/usr/share/check_mk/checks/fortigate_ipsecvpn
+	chmod +x debian/tmp/usr/share/check_mk/checks/msexch_database
 
 # Build architecture-independent files here.
 binary-indep: build install

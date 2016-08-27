@@ -18,13 +18,7 @@
         DirectoryIndex index.py
 
         #Handle apache 2.2 and 2.4
-        <IfVersion >= 2.3>
-            Require local
-        </IfVersion>
-        <IfVersion < 2.3>
-            Order deny,allow
-            allow from all
-        </IfVersion>
+        Require local
         # Need Nagios authentification. Please edit the
         # following: Set AuthName and AuthUserFile to the
         # same value that you use for your Nagios configuration!
@@ -44,8 +38,6 @@
   ## security implications and take necessary precautions before turning it on.
   ## Automation is done without HTTP Auth
   #<Location "/check_mk/automation.py">
-  #     Order allow,deny
-  #     Allow from all
   #     Satisfy any
   #</Location>
 
@@ -55,8 +47,6 @@
   ## also disabled by default on Debian.
   ## Trigger cron jobs. This is done without authentication
   #<Location "/check_mk/run_cron.py">
-  #    Order deny,allow
-  #    Deny from all
   #    Allow from 127.0.0.1
   #    Satisfy any
   #</Location>
@@ -68,7 +58,7 @@
 <IfModule !mod_python.c>
     Alias /check_mk /usr/share/check_mk/web/htdocs
     <Directory /usr/share/check_mk/web/htdocs>
-        Deny from all
+        Require all denied
         ErrorDocument 403 "<h1>Check_mk: Incomplete Apache2 Installation</h1>You need mod_python in order to run the web interface of check_mk.<br> Please install mod_python and restart Apache."
     </Directory>
 </IfModule>

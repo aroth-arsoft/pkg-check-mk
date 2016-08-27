@@ -6,3 +6,5 @@
 /ChangeLog
 *.py
 /AUTHORS
+/build-stamp
+/configure-stamp
