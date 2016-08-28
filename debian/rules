@@ -120,6 +120,7 @@ install: build
 	mkdir -p debian/tmp/lib/systemd/system
 	install -m 0644 debian/check-mk-agent.socket debian/tmp/lib/systemd/system/check-mk-agent.socket
 	install -m 0644 debian/check-mk-agent@.service debian/tmp/lib/systemd/system/check-mk-agent@.service
+	mv debian/tmp/usr/share/check_mk/agents/plugins/README debian/tmp/usr/share/doc/check_mk/agents/README.plugins
 
 # Build architecture-independent files here.
 binary-indep: build install

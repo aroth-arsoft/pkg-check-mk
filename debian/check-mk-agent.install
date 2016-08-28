@@ -2,3 +2,55 @@ usr/share/check_mk/agents/waitmax usr/bin
 usr/share/check_mk/agents/mk-job usr/bin
 lib/systemd/system/check-mk-agent.socket
 lib/systemd/system/check-mk-agent@.service
+#usr/share/check_mk/agents/plugins/README
+usr/share/check_mk/agents/plugins/plesk_domains
+#usr/share/check_mk/agents/plugins/mk_haproxy.freebsd
+usr/share/check_mk/agents/plugins/websphere_mq
+usr/share/check_mk/agents/plugins/mk_jolokia
+usr/share/check_mk/agents/plugins/mk_sap
+usr/share/check_mk/agents/plugins/mk_oracle_asm
+usr/share/check_mk/agents/plugins/netstat.linux usr/share/check_mk/agents/plugins/netstat
+usr/share/check_mk/agents/plugins/mk_oracle
+usr/share/check_mk/agents/plugins/isc_dhcpd
+#usr/share/check_mk/agents/plugins/nfsexports.solaris
+usr/share/check_mk/agents/plugins/smart
+usr/share/check_mk/agents/plugins/mk_mongodb
+usr/share/check_mk/agents/plugins/apache_status
+usr/share/check_mk/agents/plugins/dnsclient
+usr/share/check_mk/agents/plugins/db2_mem
+usr/share/check_mk/agents/plugins/vxvm
+usr/share/check_mk/agents/plugins/mk_apt
+usr/share/check_mk/agents/plugins/unitrends_replication
+usr/share/check_mk/agents/plugins/nfsexports
+usr/share/check_mk/agents/plugins/mk_mysql
+usr/share/check_mk/agents/plugins/lnx_quota
+usr/share/check_mk/agents/plugins/hpux_statgrab
+#usr/share/check_mk/agents/plugins/mk_logwatch.aix
+usr/share/check_mk/agents/plugins/mk_db2.linux usr/share/check_mk/agents/plugins/mk_db2
+usr/share/check_mk/agents/plugins/runas
+usr/share/check_mk/agents/plugins/lvm
+usr/share/check_mk/agents/plugins/kaspersky_av
+usr/share/check_mk/agents/plugins/mk_logwatch
+usr/share/check_mk/agents/plugins/mk_tinkerforge
+usr/share/check_mk/agents/plugins/mk_omreport
+usr/share/check_mk/agents/plugins/mk_postgres
+usr/share/check_mk/agents/plugins/mailman_lists
+usr/share/check_mk/agents/plugins/plesk_backups
+usr/share/check_mk/agents/plugins/mk_oracle_crs
+usr/share/check_mk/agents/plugins/mk_zypper
+#usr/share/check_mk/agents/plugins/hpux_lunstats
+usr/share/check_mk/agents/plugins/symantec_av
+#usr/share/check_mk/agents/plugins/unitrends_backup
+usr/share/check_mk/agents/plugins/asmcmd.sh
+#usr/share/check_mk/agents/plugins/mk_db2.aix
+#usr/share/check_mk/agents/plugins/mk_inventory.solaris
+#usr/share/check_mk/agents/plugins/mk_oracle.solaris
+usr/share/check_mk/agents/plugins/nginx_status
+#usr/share/check_mk/agents/plugins/mk_sap.aix
+#usr/share/check_mk/agents/plugins/netstat.aix
+#usr/share/check_mk/agents/plugins/mk_oracle.aix
+usr/share/check_mk/agents/plugins/jar_signature
+#usr/share/check_mk/agents/plugins/mk_tsm
+usr/share/check_mk/agents/plugins/mk_inventory.linux usr/share/check_mk/agents/plugins/mk_inventory
+#usr/share/check_mk/agents/plugins/mk_inventory.aix
+usr/share/check_mk/agents/plugins/mk_logins
