@@ -2,6 +2,8 @@ usr/share/check_mk/agents/waitmax usr/bin
 usr/share/check_mk/agents/mk-job usr/bin
 lib/systemd/system/check-mk-agent.socket
 lib/systemd/system/check-mk-agent@.service
+etc/check_mk/agent-plugins.d
+usr/lib/check_mk_agent/plugins
 #usr/share/check_mk/agents/plugins/README
 usr/share/check_mk/agents/plugins/plesk_domains
 #usr/share/check_mk/agents/plugins/mk_haproxy.freebsd

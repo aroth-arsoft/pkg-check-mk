@@ -1,3 +1,12 @@
+check-mk (1.2.8p9-0.3ubuntu0~aroth~ppa1) xenial; urgency=medium
+
+  * use waitmax from source tar
+  * configure active agent plugins in /etc/check_mk/agent-plugins.d
+  * install all agent plugins to /usr/share/check_mk/agents/plugins
+  * install special agents
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Mon, 29 Aug 2016 12:56:21 +0200
+
 check-mk (1.2.8p9-0.2ubuntu0~aroth~ppa1) xenial; urgency=medium
 
   * install agent plugins as well, but keep them out of harms way

@@ -1,6 +1,5 @@
 usr/bin
 etc/xinetd.d
 usr/lib
-usr/lib/check_mk_agent/plugins
 usr/lib/check_mk_agent/local
 usr/share/doc/check-mk-agent/examples

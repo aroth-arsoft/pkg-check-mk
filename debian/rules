@@ -73,8 +73,8 @@ install: build
 	rm debian/tmp/usr/share/doc/check_mk/treasures/modbus/agent_modbus
 	# waitmax, build our own
 	rm debian/tmp/usr/share/check_mk/agents/waitmax
-	# upstream stopped including waitmax.c, so we carry it in debian/
-	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/waitmax.c
+	# using the original waitmax.c
+	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/tmp/usr/share/check_mk/agents/waitmax.c
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
 	# z_os waitmax
 	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
@@ -110,10 +110,9 @@ install: build
 	rm debian/tmp/usr/share/doc/check_mk/ChangeLog
 	# remove installed COPYING, redundant
 	rm debian/tmp/usr/share/doc/check_mk/COPYING
-	# Custom aroth specific changes
-	rm debian/tmp/usr/share/check_mk/checks/mysql_slave
-	cp debian/mysql_slave debian/tmp/usr/share/check_mk/checks/mysql_slave
-	chmod +x debian/tmp/usr/share/check_mk/checks/mysql_slave
+	#
+	# Start of custom aroth specific changes
+	#
 	# fix the she-bang
 	sed -i 's@#!usr/bin/python@#!/usr/bin/python@' debian/tmp/usr/share/check_mk/checks/fortigate_ipsecvpn
 	chmod +x debian/tmp/usr/share/check_mk/checks/msexch_database
@@ -121,6 +120,14 @@ install: build
 	install -m 0644 debian/check-mk-agent.socket debian/tmp/lib/systemd/system/check-mk-agent.socket
 	install -m 0644 debian/check-mk-agent@.service debian/tmp/lib/systemd/system/check-mk-agent@.service
 	mv debian/tmp/usr/share/check_mk/agents/plugins/README debian/tmp/usr/share/doc/check_mk/agents/README.plugins
+	# symlink active check-mk-agent plugins to /etc/check_mk/agent-plugins.d
+	mkdir -p debian/tmp/etc/check_mk/agent-plugins.d
+	mkdir -p debian/tmp/usr/lib/check_mk_agent
+	ln -s ../../../../etc/check_mk/agent-plugins.d debian/tmp/usr/lib/check_mk_agent/plugins
+	# add missing she-band
+	echo "#!/usr/bin/python" > debian/tmp/usr/share/check_mk/checks/msexch_database.fixed
+	cat debian/tmp/usr/share/check_mk/checks/msexch_database >> debian/tmp/usr/share/check_mk/checks/msexch_database.fixed
+	mv debian/tmp/usr/share/check_mk/checks/msexch_database.fixed debian/tmp/usr/share/check_mk/checks/msexch_database
 
 # Build architecture-independent files here.
 binary-indep: build install

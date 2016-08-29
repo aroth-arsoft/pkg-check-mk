@@ -1,0 +1,6 @@
+check-mk-server: binary-without-manpage usr/bin/check_mk
+check-mk-server: binary-without-manpage usr/bin/cmk
+check-mk-server: binary-without-manpage usr/bin/mkp
+check-mk-server: missing-dep-for-interpreter expect => expect (usr/share/check_mk/special/special/agent_acme_sbc)
+check-mk-server: executable-not-elf-or-script usr/share/check_mk/checks/hp_proliant.include
+check-mk-server: executable-not-elf-or-script usr/share/check_mk/checks/cmctc.include
