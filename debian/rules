@@ -11,7 +11,17 @@
 
 
 
+TARGET_VERSION := $(shell dpkg-parsechangelog | awk '/Version/ { print $$2}')
+TARGET_DISTRIBUTION := $(shell dpkg-parsechangelog | awk '/Distribution/ { print $$2}')
+ifeq ($(TARGET_DISTRIBUTION),UNRELEASED)
+	TARGET_DISTRIBUTION := $(shell lsb_release -cs)
+endif
 
+ifeq ($(TARGET_DISTRIBUTION),precise)
+	NO_COMPILE := 1
+else
+	NO_COMPILE := 0
+endif
 
 configure: configure-stamp
 configure-stamp:
@@ -48,7 +58,7 @@ clean:
 	# Add here commands to clean up after the build process.
 	rm -rf agents docs config livestatus.src livestatus.log
 
-	dh_clean --with systemd
+	dh_clean
 
 install: build
 	dh_testdir
@@ -57,7 +67,11 @@ install: build
 	dh_installdirs
 	dh_installdebconf
 	mkdir -p debian/tmp
+ifeq ($(NO_COMPILE),1)
+	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no ./setup.sh --yes
+else
 	DESTDIR=debian/tmp ./setup.sh --yes
+endif
 	## clean up binaries shipped by upstream
 	# upstream agent deb and rpm
 	rm -rf debian/tmp/usr/share/check_mk/agent/check-mk-agent*.deb
@@ -75,7 +89,14 @@ install: build
 	rm debian/tmp/usr/share/check_mk/agents/waitmax
 	# using the original waitmax.c
 	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/tmp/usr/share/check_mk/agents/waitmax.c
+ifeq ($(NO_COMPILE),0)
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
+else
+	mkdir -p debian/tmp/usr/lib/check_mk
+	touch debian/tmp/usr/lib/check_mk/livestatus.o
+	mkdir -p debian/tmp/usr/bin
+	echo "#!/bin/false" > debian/tmp/usr/bin/unixcat
+endif
 	# z_os waitmax
 	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
 	## config files

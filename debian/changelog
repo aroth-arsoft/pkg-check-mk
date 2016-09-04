@@ -1,3 +1,9 @@
+check-mk (1.2.8p9-0.4ubuntu0.1) xenial; urgency=medium
+
+  * prepare build for precise, trusty and xenial
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sun, 04 Sep 2016 13:25:57 +0200
+
 check-mk (1.2.8p9-0.3ubuntu0~aroth~ppa1) xenial; urgency=medium
 
   * use waitmax from source tar
