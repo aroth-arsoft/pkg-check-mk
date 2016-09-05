@@ -149,6 +149,8 @@ endif
 	echo "#!/usr/bin/python" > debian/tmp/usr/share/check_mk/checks/msexch_database.fixed
 	cat debian/tmp/usr/share/check_mk/checks/msexch_database >> debian/tmp/usr/share/check_mk/checks/msexch_database.fixed
 	mv debian/tmp/usr/share/check_mk/checks/msexch_database.fixed debian/tmp/usr/share/check_mk/checks/msexch_database
+	# add patched version of checks/fritz
+	cp debian/check_fritz debian/tmp/usr/share/check_mk/checks/fritz
 
 # Build architecture-independent files here.
 binary-indep: build install
