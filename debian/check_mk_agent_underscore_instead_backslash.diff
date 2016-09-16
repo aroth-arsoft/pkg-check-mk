@@ -1,0 +1,20 @@
+--- check_mk_agent.org	2016-09-16 07:43:23.152152204 +0200
++++ check_mk_agent	2016-09-16 07:43:56.838860061 +0200
+@@ -870,7 +870,7 @@
+     # Call some plugins only every X'th second
+     for skript in [1-9]*/* ; do
+         if is_valid_plugin "$skript" ; then
+-            run_cached local_${skript//\//\\} ${skript%/*} "$skript"
++            run_cached local_${skript//\//_} ${skript%/*} "$skript"
+         fi
+     done
+ fi
+@@ -885,7 +885,7 @@
+     # Call some plugins only every Xth second
+     for skript in [1-9]*/* ; do
+         if is_valid_plugin "$skript" ; then
+-            run_cached plugins_${skript//\//\\} ${skript%/*} "$skript"
++            run_cached plugins_${skript//\//_} ${skript%/*} "$skript"
+         fi
+     done
+ fi
