@@ -117,7 +117,7 @@ endif
 	# sed -i 's#/nagios/cgi-bin/#/cgi-bin/nagios3/#' debian/tmp/check-mk-config-nagios3/etc/nagios3/conf.d/check_mk_templates.cfg
 	# Prepare agent files
 	cp debian/tmp/usr/share/check_mk/agents/check_mk_agent.linux debian/check-mk-agent/usr/bin/check_mk_agent
-	patch -i debian/check_mk_agent_underscore_instead_backslash.diff debian/check-mk-agent/usr/bin/check_mk_agent
+	#patch -i debian/check_mk_agent_underscore_instead_backslash.diff debian/check-mk-agent/usr/bin/check_mk_agent
 	chmod +x debian/check-mk-agent/usr/bin/check_mk_agent
 	# mkp wrapper script
 	mkdir -p debian/check-mk-server/usr/bin
