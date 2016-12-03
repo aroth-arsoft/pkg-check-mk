@@ -1,3 +1,9 @@
+check-mk (1.2.8p14-0.1ubuntu0.1) yakkety; urgency=medium
+
+  * new upstream version
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 03 Dec 2016 15:41:29 +0100
+
 check-mk (1.2.8p11-0.1ubuntu0.1) xenial; urgency=medium
 
   * new upstream version
