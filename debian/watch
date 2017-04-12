@@ -1,2 +1,2 @@
-version=2
-http://mathias-kettner.de/download/check_mk-([p\d\.]*)\.tar\.gz
+version=3
+http://mathias-kettner.com/check_mk_download_source.html download/check_mk-(1\.2\.[p\d\.]*)\.tar\.gz

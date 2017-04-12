@@ -1,2 +1,0 @@
-usr/share/check_mk/check_mk_templates.cfg etc/nagios3/conf.d/check_mk
-etc/check_mk/multisite.mk

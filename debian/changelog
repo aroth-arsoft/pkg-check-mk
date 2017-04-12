@@ -1,3 +1,39 @@
+check-mk (1.2.8p20-0ubuntu0.1) yakkety; urgency=medium
+
+  * new upstream version 1.2.8p20
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 12 Apr 2017 15:01:38 +0200
+
+check-mk (1.2.8p16-1ubuntu0.1) zesty; urgency=medium
+
+  * Added patch to fix downtime.h's scheduled_downtime_struct (LP: #1372284)
+
+ -- Haw Loeung <haw.loeung@canonical.com>  Tue, 04 Apr 2017 17:17:00 -0700
+
+check-mk (1.2.8p16-1) unstable; urgency=medium
+
+  * new upstream release
+  * fix some lintian errors
+  * update policy version
+  * fix debian/watch
+  * update debhelper version
+  * clean up nagios support/references, thanks Bas Couwenberg! (Closes: #846848)
+
+ -- Matt Taggart <taggart@debian.org>  Thu, 26 Jan 2017 23:20:02 -0800
+
+check-mk (1.2.8p14-1) unstable; urgency=low
+
+  [ Bas Couwenberg ]
+  * Team upload.
+  * Update Vcs-* URLs to use HTTPS.
+
+  [ Matt Taggart ]
+  * Imported Upstream version 1.2.8p14
+  * upstream will now use coreutils timeout if available rather than waitmax
+  * xinetd.conf example moved, new xinetd_caching.conf
+
+ -- Matt Taggart <taggart@debian.org>  Tue, 24 Jan 2017 12:20:53 -0800
+
 check-mk (1.2.8p14-0.1ubuntu0.1) yakkety; urgency=medium
 
   * new upstream version

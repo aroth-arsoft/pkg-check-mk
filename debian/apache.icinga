@@ -10,15 +10,21 @@
 # inconveniance.
 
 <IfModule mod_python.c>
-    Alias /check_mk /usr/share/check_mk/web/htdocs
-    <Directory /usr/share/check_mk/web/htdocs>
+  Alias /check_mk /usr/share/check_mk/web/htdocs
+  <Directory /usr/share/check_mk/web/htdocs>
         AddHandler mod_python .py
         PythonHandler index
         PythonDebug On
         DirectoryIndex index.py
 
         #Handle apache 2.2 and 2.4
-        Require local
+        <IfVersion >= 2.3>
+            Require local
+        </IfVersion>
+        <IfVersion < 2.3>
+            Order deny,allow
+            allow from all
+        </IfVersion>
         # Need Nagios authentification. Please edit the
         # following: Set AuthName and AuthUserFile to the
         # same value that you use for your Nagios configuration!
@@ -56,9 +62,9 @@
 
 
 <IfModule !mod_python.c>
-    Alias /check_mk /usr/share/check_mk/web/htdocs
-    <Directory /usr/share/check_mk/web/htdocs>
-        Require all denied
+  Alias /check_mk /usr/share/check_mk/web/htdocs
+  <Directory /usr/share/check_mk/web/htdocs>
+        Deny from all
         ErrorDocument 403 "<h1>Check_mk: Incomplete Apache2 Installation</h1>You need mod_python in order to run the web interface of check_mk.<br> Please install mod_python and restart Apache."
-    </Directory>
+  </Directory>
 </IfModule>
