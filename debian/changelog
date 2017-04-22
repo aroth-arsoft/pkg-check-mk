@@ -1,3 +1,10 @@
+check-mk (1.2.8p21-0ubuntu0.1) yakkety; urgency=medium
+
+  * new upstream version 1.2.8p21
+  * drop depends to libapache2-mod-python
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 22 Apr 2017 09:52:28 +0200
+
 check-mk (1.2.8p20-0ubuntu0.1) yakkety; urgency=medium
 
   * new upstream version 1.2.8p20

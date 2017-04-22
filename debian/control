@@ -89,7 +89,7 @@ Description: general purpose monitoring plugin for retrieving data
 
 Package: check-mk-multisite
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libapache2-mod-python, check-mk-config-icinga
+Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-config-icinga
 Recommends: sudo, check-mk-doc
 Suggests: check-mk-livestatus
 Description: general purpose monitoring plugin for retrieving data
