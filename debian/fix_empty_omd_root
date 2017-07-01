@@ -1,0 +1,14 @@
+--- a/__init__.py	2017-07-01 18:17:26.208888967 +0200
++++ b/__init__.py	2017-07-01 18:19:19.816891877 +0200
+@@ -37,7 +37,10 @@
+ 
+ 
+ def omd_version():
+-    return os.path.basename(os.readlink(cmk.paths.omd_root + "/version"))
++    if cmk.paths.omd_root:
++        return os.path.basename(os.readlink(cmk.paths.omd_root + "/version"))
++    else:
++        return __version__ + ".cre"
+ 
+ 
+ def edition_short():

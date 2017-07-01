@@ -1,0 +1,22 @@
+--- a/paths.py	2017-05-30 15:55:11.000000000 +0200
++++ b/paths.py	2017-07-01 17:46:17.034563163 +0200
+@@ -117,7 +117,7 @@
+         "final_config_file"           : os.path.join(omd_root, "etc/check_mk/final.mk"),
+         "local_config_file"           : os.path.join(omd_root, "etc/check_mk/local.mk"),
+         "check_mk_config_dir"         : os.path.join(omd_root, "etc/check_mk/conf.d"),
+-        "modules_dir"                 : os.path.join(omd_root, "share/check_mk/modules"),
++        "modules_dir"                 : os.path.join(omd_root, "usr/share/check_mk/modules"),
+         "var_dir"                     : os.path.join(omd_root, "var/check_mk"),
+         "log_dir"                     : os.path.join(omd_root, "var/log"),
+         "autochecks_dir"              : os.path.join(omd_root, "var/check_mk/autochecks"),
+@@ -138,8 +138,8 @@
+         "apache_config_dir"           : os.path.join(omd_root, "etc/apache"),
+         "htpasswd_file"               : os.path.join(omd_root, "etc/htpasswd"),
+         "livestatus_unix_socket"      : os.path.join(omd_root, "tmp/run/live"),
+-        "pnp_rraconf_dir"             : os.path.join(omd_root, "share/check_mk/pnp-rraconf"),
+-        "livebackendsdir"             : os.path.join(omd_root, "share/check_mk/livestatus"),
++        "pnp_rraconf_dir"             : os.path.join(omd_root, "usr/share/check_mk/pnp-rraconf"),
++        "livebackendsdir"             : os.path.join(omd_root, "usr/share/check_mk/livestatus"),
+     })
+ 
+     _set_core_specific_paths()

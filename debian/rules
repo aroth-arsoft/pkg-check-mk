@@ -151,6 +151,13 @@ endif
 	mv debian/tmp/usr/share/check_mk/checks/msexch_database.fixed debian/tmp/usr/share/check_mk/checks/msexch_database
 	# add patched version of checks/fritz
 	cp debian/check_fritz debian/tmp/usr/share/check_mk/checks/fritz
+	# copy livestatus.py to python dist-packages
+	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python2.7/dist-packages/livestatus.py
+	# patch the paths.py file
+	patch -p1 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_paths_py
+	# patch the __init__.py file
+	patch -p1 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_empty_omd_root
+
 
 # Build architecture-independent files here.
 binary-indep: build install
