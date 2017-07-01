@@ -7,7 +7,7 @@
 # and enter new values when asked, or edit ~/.check_mk_setup.conf and
 # run ./setup.sh --yes.
 
-check_mk_version            = '1.2.8p20'
+check_mk_version            = '1.4.0p7'
 default_config_dir          = '/etc/check_mk'
 check_mk_configdir          = '/etc/check_mk/conf.d'
 share_dir                   = '/usr/share/check_mk'

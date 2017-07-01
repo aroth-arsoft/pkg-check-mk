@@ -1,8 +1,22 @@
+check-mk (1.4.0p7+dfsg-0ubuntu0.2) zesty; urgency=medium
+
+  * try to build 
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 01 Jul 2017 14:40:21 +0200
+
 check-mk (1.4.0p7+dfsg-0ubuntu0.1) zesty; urgency=medium
 
   * new upstream version
 
  -- Andreas Roth <aroth@arsoft-online.com>  Sat, 01 Jul 2017 14:16:00 +0200
+
+check-mk (1.4.0p6-1) UNRELEASED; urgency=high
+
+  * new upstream release
+  * fixes CVE-2017-9781 (Closes: #865497)
+  * add new librrd-dev, libboost-dev, libboost-system-dev build-deps
+
+ -- Matt Taggart <taggart@debian.org>  Thu, 22 Jun 2017 15:44:37 -0700
 
 check-mk (1.4.0-0ubuntu0.4) zesty; urgency=medium
 

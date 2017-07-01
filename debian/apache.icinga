@@ -1,4 +1,4 @@
-# Created by setup of check_mk version 1.2.6p12
+# Created by setup of check_mk version 1.4.0p6
 # This file will *not* be overwritten at the next setup
 # of check_mk. You may edit it as needed. In order to get
 # a new version, please delete it and re-run setup.sh.
@@ -15,7 +15,7 @@
         AddHandler mod_python .py
         PythonHandler index
         PythonDebug On
-        DirectoryIndex index.py
+	DirectoryIndex index.py
 
         #Handle apache 2.2 and 2.4
         <IfVersion >= 2.3>
@@ -34,8 +34,8 @@
         require valid-user
 
         ErrorDocument 403 "<h1>Authentication Problem</h1>Either you've entered an invalid password or the authentication<br>configuration of your check_mk web pages is incorrect.<br><br>Please make sure that you've edited the file<br><tt>/etc/apache2/conf.d/check_mk</tt> and made it use the same<br>authentication settings as your Nagios web pages.<br>Restart Apache afterwards."
-        ErrorDocument 500 "<h1>Server or Configuration Problem</h1>A Server problem occurred. You'll find details in the error log of Apache. One possible reason is, that the file <tt>/etc/nagios/htpasswd.users</tt> is missing. You can create that file with <tt>htpasswd</tt> or <tt>htpasswd2</tt>. A better solution might be to use your existing htpasswd file from your Nagios installation. Please edit <tt>/etc/apache2/conf.d/check_mk</tt> and change the path there. Restart Apache afterwards."
-    </Directory>
+        ErrorDocument 500 "<h1>Server or Configuration Problem</h1>A Server problem occurred. You'll find details in the error log of Apache. One possible reason is, that the file <tt>/etc/icinga/htpasswd.users</tt> is missing. You can create that file with <tt>htpasswd</tt> or <tt>htpasswd2</tt>. A better solution might be to use your existing htpasswd file from your Nagios installation. Please edit <tt>/etc/apache2/conf.d/check_mk</tt> and change the path there. Restart Apache afterwards."
+  </Directory>
   ## WARNING: automation is part of multisite, more information at
   ##  http://mathias-kettner.com/checkmk_multisite_automation.html
   ## It uses a shared secret rather than HTTP Auth for authentication and

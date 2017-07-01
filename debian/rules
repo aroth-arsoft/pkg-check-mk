@@ -31,8 +31,6 @@ configure-stamp:
 	tar -xzf agents.tar.gz -C agents
 	mkdir docs
 	tar -xzf doc.tar.gz -C docs
-	#mkdir config
-	#tar -xzf conf.tar.gz -C config
 
 	touch configure-stamp
 
@@ -77,15 +75,28 @@ endif
 	rm -rf debian/tmp/usr/share/check_mk/agent/check-mk-agent*.deb
 	rm -rf debian/tmp/usr/share/check_mk/agent/check-mk-agent*.rpm
 	# java jar and classes (we don't rebuild these, help if you want them)
-	rm -rf debian/tmp/usr/share/doc/check_mk/jasperreports
-	# Windows binaries (we don't rebuild these, help if you want them)
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/jasperreports
+	# Windows binaries related (we don't rebuild these, help if you want them)
 	rm -rf debian/tmp/usr/share/check_mk/agents/windows
+	rm -rf debian/tmp/usr/share/doc/check_mk/windows
+	rm -rf debian/tmp/usr/share/doc/check_mk/checks/windows_*
+	rm -rf debian/tmp/usr/share/check_mk/checks/windows_*
 	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/windows_msi
-	# fsc-celsius 'treasure' tarball that includes binaries
-	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/fsc-celsius*
-	# agent_modbus
+	# remove deprecated stuff
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/deprecated
+	# remove binary selinux policy file
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/selinux/omd.pp
+	# remove webapps mkp package file and dir
+	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/webapp
+	# remove sap agent with source tarball
+	rm -rf debian/tmp/usr/share/check_mk/agents/sap
+	# remove binary agent_modbus
 	rm debian/tmp/usr/share/doc/check_mk/treasures/modbus/agent_modbus
+	# remove waitmax binary, check_mk will use timeout if available
+	rm debian/tmp/usr/share/check_mk/agents/waitmax
+	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
 ifeq ($(NO_COMPILE),0)
+	# copy the livestatus stuff that setup.sh generated in it's own dir
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
 else
 	mkdir -p debian/tmp/usr/lib/check_mk
@@ -93,11 +104,9 @@ else
 	mkdir -p debian/tmp/usr/bin
 	echo "#!/bin/false" > debian/tmp/usr/bin/unixcat
 endif
-	# z_os waitmax
-	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
 	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/modules/
 	cp debian/defaults.icinga debian/check-mk-config-icinga/usr/share/check_mk/modules/defaults
-	# We need 2 different Apache configs
+	# Switch the apache config to reference icinga
 	mkdir -p debian/check-mk-config-icinga/etc/apache2/conf-available/
 	cp debian/apache.icinga debian/check-mk-config-icinga/etc/apache2/conf-available/check-mk-multisite.conf
 	# Adjust path names
