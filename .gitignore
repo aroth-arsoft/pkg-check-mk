@@ -10,3 +10,6 @@
 /configure-stamp
 /.pc/
 /standalone.make
+/agents/
+/docs/
+/livestatus.src/

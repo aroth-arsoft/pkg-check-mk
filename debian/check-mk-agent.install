@@ -1,4 +1,3 @@
-usr/share/check_mk/agents/waitmax usr/bin
 usr/share/check_mk/agents/mk-job usr/bin
 lib/systemd/system/check-mk-agent.socket
 lib/systemd/system/check-mk-agent@.service
