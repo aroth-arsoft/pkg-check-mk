@@ -1,3 +1,9 @@
+check-mk (1.4.0p7+dfsg-0ubuntu0.4) zesty; urgency=medium
+
+  * fix missing python files
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sat, 01 Jul 2017 16:23:06 +0200
+
 check-mk (1.4.0p7+dfsg-0ubuntu0.3) zesty; urgency=medium
 
   * remove waitmax

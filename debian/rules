@@ -20,7 +20,11 @@ endif
 ifeq ($(TARGET_DISTRIBUTION),precise)
 	NO_COMPILE := 1
 else
-	NO_COMPILE := 0
+	ifeq ($(TARGET_DISTRIBUTION),trusty)
+		NO_COMPILE := 1
+	else
+		NO_COMPILE := 0
+	endif
 endif
 
 configure: configure-stamp
@@ -66,9 +70,9 @@ install: build
 	dh_installdebconf
 	mkdir -p debian/tmp
 ifeq ($(NO_COMPILE),1)
-	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no ./setup.sh --yes
+	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no python_lib_dir=/usr/lib/python2.7/dist-packages ./setup.sh --yes
 else
-	DESTDIR=debian/tmp ./setup.sh --yes
+	DESTDIR=debian/tmp python_lib_dir=/usr/lib/python2.7/dist-packages ./setup.sh --yes
 endif
 	## clean up binaries shipped by upstream
 	# upstream agent deb and rpm
