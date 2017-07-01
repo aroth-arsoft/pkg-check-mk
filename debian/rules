@@ -31,8 +31,8 @@ configure-stamp:
 	tar -xzf agents.tar.gz -C agents
 	mkdir docs
 	tar -xzf doc.tar.gz -C docs
-	mkdir config
-	tar -xzf conf.tar.gz -C config
+	#mkdir config
+	#tar -xzf conf.tar.gz -C config
 
 	touch configure-stamp
 
@@ -85,10 +85,6 @@ endif
 	rm -rf debian/tmp/usr/share/doc/check_mk/treasures/fsc-celsius*
 	# agent_modbus
 	rm debian/tmp/usr/share/doc/check_mk/treasures/modbus/agent_modbus
-	# waitmax, build our own
-	rm debian/tmp/usr/share/check_mk/agents/waitmax
-	# using the original waitmax.c
-	gcc -s -o debian/tmp/usr/share/check_mk/agents/waitmax debian/tmp/usr/share/check_mk/agents/waitmax.c
 ifeq ($(NO_COMPILE),0)
 	cp -a livestatus.src/debian/tmp/* debian/tmp/
 else
@@ -99,10 +95,6 @@ else
 endif
 	# z_os waitmax
 	rm debian/tmp/usr/share/check_mk/agents/z_os/waitmax
-	## config files
-	# We need 2 different "defaults" files for Icinga and Nagios3
-	rm debian/tmp/usr/share/check_mk/modules/defaults
-	rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
 	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/modules/
 	cp debian/defaults.icinga debian/check-mk-config-icinga/usr/share/check_mk/modules/defaults
 	# We need 2 different Apache configs

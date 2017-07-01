@@ -1,6 +1,6 @@
 --- a/setup.sh
 +++ b/setup.sh
-@@ -1034,8 +1034,9 @@
+@@ -978,8 +978,9 @@
             # WATO. Also create an empty and Apache-writable auth.serials
             serials_file=$DESTDIR${htpasswd_file%/*}/auth.serials &&
             touch "$serials_file" &&

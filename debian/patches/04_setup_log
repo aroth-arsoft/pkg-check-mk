@@ -1,0 +1,20 @@
+--- a/setup.sh
++++ b/setup.sh
+@@ -705,7 +705,7 @@
+ 	   if [ "$enable_livestatus" = yes ]
+ 	   then
+ 	       if [ -z "$YES" ] ; then echo -n "(Compiling MK Livestatus..." ; fi
+-	       compile_livestatus 2>&1 | propeller > $SRCDIR/livestatus.log
++	       compile_livestatus 2>&1 | propeller
+ 	       if [ "${PIPESTATUS[0]}" = 0 ]
+ 	       then
+ 
+@@ -985,7 +985,7 @@
+            if [ "$enable_mkeventd" = yes ]
+            then
+ 	       if [ -z "$YES" ] ; then echo -n "(Compiling Event Console binaries..." ; fi
+-	       compile_mkeventd 2>&1 | propeller > $SRCDIR/mkeventd.log
++	       compile_mkeventd 2>&1 | propeller
+ 	       if [ "${PIPESTATUS[0]}" = 0 ]
+ 	       then
+                    pushd $SRCDIR > /dev/null &&

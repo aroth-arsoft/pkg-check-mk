@@ -8,7 +8,7 @@ Uploaders: Alexander Wirt <formorer@debian.org>,
            Thomas Bechtold <toabctl@debian.org>,
            Ilya Rassadin <elcamlost@gmail.com>,
            Matt Taggart <taggart@debian.org>
-Build-Depends: debhelper (>= 9), dh-systemd
+Build-Depends: debhelper (>= 9), dh-systemd, gawk, librrd-dev, libboost-dev
 Standards-Version: 3.9.8
 Vcs-Git: https://anonscm.debian.org/git/pkg-nagios/pkg-check-mk.git
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-nagios/pkg-check-mk.git

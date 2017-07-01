@@ -9,3 +9,4 @@
 /build-stamp
 /configure-stamp
 /.pc/
+/standalone.make

@@ -1,6 +1,6 @@
 --- a/setup.sh
 +++ b/setup.sh
-@@ -568,6 +568,8 @@
+@@ -506,6 +506,8 @@
     rm -rf $D
     mkdir -p $D
     tar xvzf $SRCDIR/livestatus.tar.gz -C $D

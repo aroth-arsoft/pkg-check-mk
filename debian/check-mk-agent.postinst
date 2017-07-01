@@ -1,10 +1,11 @@
 #!/bin/bash
 case "$1" in
 	configure|upgrade)
-        test -d /usr/lib/check_mk_agent/plugins && mv /usr/lib/check_mk_agent/plugins /usr/lib/check_mk_agent/plugins.old
-        test ! -h /usr/lib/check_mk_agent/plugins && ln -s ../../../../etc/check_mk/agent-plugins.d /usr/lib/check_mk_agent/plugins
+        test -d /usr/lib/check_mk_agent/plugins && mv /usr/lib/check_mk_agent/plugins /usr/lib/check_mk_agent/plugins.old || true
+        test ! -h /usr/lib/check_mk_agent/plugins && ln -s ../../../../etc/check_mk/agent-plugins.d /usr/lib/check_mk_agent/plugins || true
         # make sure spool directory exists
-        test ! -d /var/lib/check_mk_agent/spool && mkdir /var/lib/check_mk_agent/spool
+        test ! -d /var/lib/check_mk_agent/spool && mkdir /var/lib/check_mk_agent/spool || true
+        true
         ;;
 esac
 
