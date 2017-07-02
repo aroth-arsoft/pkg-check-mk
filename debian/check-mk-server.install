@@ -13,5 +13,6 @@ usr/share/check_mk/modules
 usr/share/check_mk/pnp-templates
 usr/share/check_mk/notifications
 usr/share/check_mk/agents/special/* /usr/share/check_mk/special
+usr/share/check_mk/werks
 usr/lib/python*/dist-packages/*/*.py
 usr/lib/python*/dist-packages/*.py

@@ -154,9 +154,10 @@ endif
 	# copy livestatus.py to python dist-packages
 	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python2.7/dist-packages/livestatus.py
 	# patch the paths.py file
-	patch -p1 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_paths_py
+	patch -p0 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_paths_py
 	# patch the __init__.py file
 	patch -p1 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_empty_omd_root
+	patch -p0 -d debian/tmp/usr/share/check_mk/web/htdocs < debian/fix_missing_crash_handler
 
 
 # Build architecture-independent files here.

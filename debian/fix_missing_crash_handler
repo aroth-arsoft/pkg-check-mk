@@ -1,0 +1,19 @@
+--- index.py.org	2017-07-02 15:31:03.148772128 +0200
++++ index.py	2017-07-02 12:55:48.204589556 +0200
+@@ -145,7 +145,15 @@
+             html.set_output_format("text")
+             html.write(_("Internal error") + ": %s\n" % html.attrencode(e))
+         elif not fail_silently():
+-            modules.get_handler("gui_crash")()
++            hdlr = modules.get_handler("gui_crash")
++            if(hdlr is not None):
++                hdlr()
++            else:
++                import traceback
++                html.set_output_format("text")
++                html.write(_("Internal error") + ": %s\n" % html.attrencode(e))
++                html.write(_("Stack") + ": %s\n" % html.attrencode(traceback.format_exc()))
++
+         response_code = apache.OK
+ 
+     finally:

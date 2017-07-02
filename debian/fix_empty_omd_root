@@ -5,7 +5,7 @@
  
  def omd_version():
 -    return os.path.basename(os.readlink(cmk.paths.omd_root + "/version"))
-+    if cmk.paths.omd_root:
++    if cmk.paths.omd_root and cmk.paths.omd_root != '/':
 +        return os.path.basename(os.readlink(cmk.paths.omd_root + "/version"))
 +    else:
 +        return __version__ + ".cre"
