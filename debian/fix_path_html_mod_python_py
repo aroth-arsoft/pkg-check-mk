@@ -1,0 +1,11 @@
+--- a/html_mod_python.py	2017-05-30 15:55:12.000000000 +0200
++++ b/html_mod_python.py	2017-08-02 08:05:28.749033011 +0200
+@@ -344,7 +344,7 @@
+         # or images/icons/*.png. When an icon is available as internal icon,
+         # always use this one
+         is_internal = False
+-        rel_path = "share/check_mk/web/htdocs/images/icon_"+icon_name+".png"
++        rel_path = "usr/share/check_mk/web/htdocs/images/icon_"+icon_name+".png"
+         if os.path.exists(cmk.paths.omd_root+"/"+rel_path):
+             is_internal = True
+         elif os.path.exists(cmk.paths.omd_root+"/local/"+rel_path):

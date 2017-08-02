@@ -8,7 +8,8 @@ Uploaders: Alexander Wirt <formorer@debian.org>,
            Thomas Bechtold <toabctl@debian.org>,
            Ilya Rassadin <elcamlost@gmail.com>,
            Matt Taggart <taggart@debian.org>
-Build-Depends: debhelper (>= 9), dh-systemd, gawk, librrd-dev, libboost-dev, libboost-system-dev
+Build-Depends: debhelper (>= 9), dh-systemd, dh-python, python3, gawk, librrd-dev, libboost-dev,
+ libboost-system-dev
 Standards-Version: 3.9.8
 Vcs-Git: https://anonscm.debian.org/git/pkg-nagios/pkg-check-mk.git
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-nagios/pkg-check-mk.git
@@ -117,3 +118,17 @@ Description: general purpose monitoring plugin for retrieving data (documentatio
   * Automatic inventory of items to be checked on hosts.
  .
  This package contains the check_mk documentation.
+
+Package: python3-check-mk
+Architecture: all
+Section: python
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: general purpose monitoring plugin for retrieving data (python libraries)
+ Check_mk adopts a new a approach for collecting data from operating systems
+ and network components. It obsoletes NRPE, check_by_ssh, NSClient and
+ check_snmp. It has many benefits, the most important of which are:
+ .
+  * Significant reduction of CPU usage on the Nagios host.
+  * Automatic inventory of items to be checked on hosts.
+ .
+ This package contains the check_mk python libraries.

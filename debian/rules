@@ -70,9 +70,9 @@ install: build
 	dh_installdebconf
 	mkdir -p debian/tmp
 ifeq ($(NO_COMPILE),1)
-	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no python_lib_dir=/usr/lib/python2.7/dist-packages ./setup.sh --yes
+	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no python_lib_dir=/usr/lib/python3/dist-packages ./setup.sh --yes
 else
-	DESTDIR=debian/tmp python_lib_dir=/usr/lib/python2.7/dist-packages ./setup.sh --yes
+	DESTDIR=debian/tmp python_lib_dir=/usr/lib/python3/dist-packages ./setup.sh --yes
 endif
 	## clean up binaries shipped by upstream
 	# upstream agent deb and rpm
@@ -108,6 +108,9 @@ else
 	mkdir -p debian/tmp/usr/bin
 	echo "#!/bin/false" > debian/tmp/usr/bin/unixcat
 endif
+	# We need 2 different "defaults" files for Icinga and Nagios3
+	rm debian/tmp/usr/share/check_mk/modules/defaults
+	rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
 	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/modules/
 	cp debian/defaults.icinga debian/check-mk-config-icinga/usr/share/check_mk/modules/defaults
 	# Switch the apache config to reference icinga
@@ -152,12 +155,13 @@ endif
 	# add patched version of checks/fritz
 	cp debian/check_fritz debian/tmp/usr/share/check_mk/checks/fritz
 	# copy livestatus.py to python dist-packages
-	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python2.7/dist-packages/livestatus.py
+	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python3/dist-packages/livestatus.py
 	# patch the paths.py file
-	patch -p0 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_paths_py
+	patch -p0 -d debian/tmp/usr/lib/python3/dist-packages/cmk < debian/fix_paths_py
 	# patch the __init__.py file
-	patch -p1 -d debian/tmp/usr/lib/python2.7/dist-packages/cmk < debian/fix_empty_omd_root
+	patch -p1 -d debian/tmp/usr/lib/python3/dist-packages/cmk < debian/fix_empty_omd_root
 	patch -p0 -d debian/tmp/usr/share/check_mk/web/htdocs < debian/fix_missing_crash_handler
+	patch -p0 -d debian/tmp/usr/share/check_mk/web/htdocs < debian/fix_path_html_mod_python_py
 
 
 # Build architecture-independent files here.
