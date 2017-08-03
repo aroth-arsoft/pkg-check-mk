@@ -1,3 +1,9 @@
+check-mk (1.4.0p9+dfsg-0ubuntu0.1) zesty; urgency=medium
+
+  * new upstream version
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Thu, 03 Aug 2017 19:42:06 +0200
+
 check-mk (1.4.0p7+dfsg-0ubuntu0.5) zesty; urgency=medium
 
   * fix path for CSS/JS, image and icons files 

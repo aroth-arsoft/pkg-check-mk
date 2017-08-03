@@ -109,8 +109,8 @@ else
 	echo "#!/bin/false" > debian/tmp/usr/bin/unixcat
 endif
 	# We need 2 different "defaults" files for Icinga and Nagios3
-	rm debian/tmp/usr/share/check_mk/modules/defaults
-	rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
+	#rm debian/tmp/usr/share/check_mk/modules/defaults
+	#rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
 	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/modules/
 	cp debian/defaults.icinga debian/check-mk-config-icinga/usr/share/check_mk/modules/defaults
 	# Switch the apache config to reference icinga
