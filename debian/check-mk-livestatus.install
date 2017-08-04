@@ -1,2 +1,3 @@
 usr/lib/check_mk/livestatus.o
 usr/bin/unixcat
+usr/lib/python*/dist-packages/livestatus.py

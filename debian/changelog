@@ -1,3 +1,9 @@
+check-mk (1.4.0p9+dfsg-0ubuntu0.2) zesty; urgency=medium
+
+  * check-mk-common package
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Fri, 04 Aug 2017 07:24:29 +0200
+
 check-mk (1.4.0p9+dfsg-0ubuntu0.1) zesty; urgency=medium
 
   * new upstream version

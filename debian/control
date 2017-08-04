@@ -45,7 +45,8 @@ Description: general purpose monitoring plugin for retrieving data
 
 Package: check-mk-server
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, python, check-mk-config-icinga, debconf
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, python, check-mk-common,
+ check-mk-config-icinga, debconf
 Recommends: check-mk-doc, snmp
 Description: general purpose monitoring plugin for retrieving data
  Check_mk adopts a new a approach for collecting data from operating systems
@@ -90,7 +91,7 @@ Description: general purpose monitoring plugin for retrieving data
 
 Package: check-mk-multisite
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-config-icinga
+Depends: ${shlibs:Depends}, ${misc:Depends}, check-mk-config-icinga, check-mk-common
 Recommends: sudo, check-mk-doc
 Suggests: check-mk-livestatus
 Description: general purpose monitoring plugin for retrieving data
@@ -119,11 +120,11 @@ Description: general purpose monitoring plugin for retrieving data (documentatio
  .
  This package contains the check_mk documentation.
 
-Package: python3-check-mk
+Package: check-mk-common
 Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python3:Depends}
-Description: general purpose monitoring plugin for retrieving data (python libraries)
+Description: general purpose monitoring plugin for retrieving data (common libraries)
  Check_mk adopts a new a approach for collecting data from operating systems
  and network components. It obsoletes NRPE, check_by_ssh, NSClient and
  check_snmp. It has many benefits, the most important of which are:
