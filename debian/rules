@@ -70,9 +70,9 @@ install: build
 	dh_installdebconf
 	mkdir -p debian/tmp
 ifeq ($(NO_COMPILE),1)
-	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no python_lib_dir=/usr/share/check-mk-common ./setup.sh --yes
+	DESTDIR=debian/tmp enable_livestatus=no enable_mkeventd=no python_lib_dir=/python ./setup.sh --yes
 else
-	DESTDIR=debian/tmp python_lib_dir=/usr/share/check-mk-common ./setup.sh --yes
+	DESTDIR=debian/tmp python_lib_dir=/python ./setup.sh --yes
 endif
 	## clean up binaries shipped by upstream
 	# upstream agent deb and rpm
@@ -108,14 +108,29 @@ else
 	mkdir -p debian/tmp/usr/bin
 	echo "#!/bin/false" > debian/tmp/usr/bin/unixcat
 endif
-	# We need 2 different "defaults" files for Icinga and Nagios3
-	#rm debian/tmp/usr/share/check_mk/modules/defaults
-	#rm debian/tmp/usr/share/check_mk/web/htdocs/defaults.py
-	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/modules/
-	cp debian/defaults.icinga debian/check-mk-config-icinga/usr/share/check_mk/modules/defaults
-	# Switch the apache config to reference icinga
+	## cleanup shipped byte-compiled python and regenerate it
+	#rm -rf debian/tmp/usr/lib/python2.7/dist-packages/cmk_base/*.pyc
+	#rm -rf debian/tmp/usr/lib/python2.7/dist-packages/cmk/*.pyc
+	## config files
+	# We need a "paths.py" file with edited paths for FHS and monitoring
+	#  system changes
+	# remove the provided one
+	rm debian/tmp/python/cmk/paths.py
+	# copy an icinga specific one into the icinga config package
+	mkdir -p debian/check-mk-config-icinga/usr/share/check_mk/cmk/
+	cp debian/paths.py.icinga debian/check-mk-config-icinga/usr/share/check_mk/cmk/paths.py
+ifeq (1, 0)
+	# provide a safe apache config that references icinga
 	mkdir -p debian/check-mk-config-icinga/etc/apache2/conf-available/
 	cp debian/apache.icinga debian/check-mk-config-icinga/etc/apache2/conf-available/check-mk-multisite.conf
+endif
+	# create a directory for the common package
+	mkdir -p debian/check-mk-common/usr/share/check_mk/
+	# move the python stuff to it
+	mv debian/tmp/python/* debian/check-mk-common/usr/share/check_mk/
+	## cleanup shipped byte-compiled python and regenerate it
+	rm -rf debian/check-mk-common/usr/share/check_mk/cmk_base/*.pyc
+	rm -rf debian/check-mk-common/usr/share/check_mk/cmk/*.pyc
 	# Adjust path names
 	# sed -i 's#/nagios/cgi-bin/#/cgi-bin/icinga/#' debian/tmp/check-mk-config-icinga/etc/icinga/objects/check_mk_templates.cfg
 	# Prepare agent files
@@ -157,10 +172,10 @@ endif
 	# copy livestatus.py to python dist-packages
 	mkdir -p debian/tmp/usr/lib/python3/dist-packages
 	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python3/dist-packages/livestatus.py
-	# patch the paths.py file
-	patch -p0 -d debian/tmp/usr/share/check-mk-common/cmk < debian/fix_paths_py
+	mkdir -p debian/tmp/usr/lib/python2.7/dist-packages
+	cp debian/tmp/usr/share/doc/check_mk/livestatus/api/python/livestatus.py debian/tmp/usr/lib/python2.7/dist-packages/livestatus.py
 	# patch the __init__.py file
-	patch -p1 -d debian/tmp/usr/share/check-mk-common/cmk < debian/fix_empty_omd_root
+	patch -p1 -d debian/check-mk-common/usr/share/check_mk/cmk < debian/fix_empty_omd_root
 	patch -p0 -d debian/tmp/usr/share/check_mk/web/htdocs < debian/fix_missing_crash_handler
 	patch -p0 -d debian/tmp/usr/share/check_mk/web/htdocs < debian/fix_path_html_mod_python_py
 

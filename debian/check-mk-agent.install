@@ -31,7 +31,7 @@ usr/share/check_mk/agents/plugins/mk_db2.linux usr/share/check_mk/agents/plugins
 usr/share/check_mk/agents/plugins/runas
 usr/share/check_mk/agents/plugins/lvm
 usr/share/check_mk/agents/plugins/kaspersky_av
-usr/share/check_mk/agents/plugins/mk_logwatch
+#usr/share/check_mk/agents/plugins/mk_logwatch
 usr/share/check_mk/agents/plugins/mk_tinkerforge
 usr/share/check_mk/agents/plugins/mk_omreport
 usr/share/check_mk/agents/plugins/mk_postgres
