@@ -1,3 +1,9 @@
+check-mk (1.4.0p9+dfsg-0ubuntu0.4) zesty; urgency=medium
+
+  * improves path handling
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Sun, 06 Aug 2017 13:37:04 +0200
+
 check-mk (1.4.0p9+dfsg-0ubuntu0.3) zesty; urgency=medium
 
   * fix empty common package 
